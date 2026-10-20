@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MB Family Christmas Gift Exchange</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f8f3;--card:#ffffff;--ink:#17261d;--mute:#52665a;--line:#cde0d3;--red:#c8202f;--onred:#ffffff;--gold:#ffc53d;--pine:#1b6b43;--green:#1b6b43;--ongreen:#ffffff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c2619;--card:#143626;--ink:#f4f8f2;--mute:#a7c3b2;--line:#2b5a42;--red:#ff6670;--onred:#0c2619;--pine:#6fdba1;--green:#58d08f;--ongreen:#0c2619;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c2619;--card:#143626;--ink:#f4f8f2;--mute:#a7c3b2;--line:#2b5a42;--red:#ff6670;--onred:#0c2619;--pine:#6fdba1;--green:#58d08f;--ongreen:#0c2619;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Fredoka',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:17px;line-height:1.45}
+main{max-width:520px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:28px;line-height:1.1;margin:0;font-weight:700}
+.hero{position:relative;background:#1b5e3b;color:#fff;border-radius:24px;padding:22px 18px 28px;margin:4px 0 18px;overflow:hidden;display:flex;align-items:center;gap:14px}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,#ffffffcc 1.6px,transparent 2.2px),radial-gradient(circle,#ffffff80 1px,transparent 1.6px);background-size:46px 46px,28px 28px;background-position:0 0,13px 17px;opacity:.5}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;background:repeating-linear-gradient(135deg,#c8202f 0 12px,#fff 12px 24px)}
+.hero>*{position:relative;z-index:1}
+.hero svg{flex-shrink:0}
+.hero p{margin:4px 0 0;font-size:15px;opacity:.92}
+h2{font-size:21px;margin:0 0 6px;font-weight:600}
+p{margin:0 0 12px}
+.sub,.note{color:var(--mute)}
+.note{font-size:15px}
+button,input,a{font:inherit;color:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.pill{border:2px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-weight:500}
+.pill.on{background:var(--green);border-color:var(--green);color:var(--ongreen)}
+.card{background:var(--card);border:2px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.add{display:flex;gap:8px;margin-bottom:10px}
+input{flex:1;min-width:0;border:2px solid var(--line);background:var(--bg);border-radius:14px;padding:10px 14px}
+label{display:block;font-weight:500;margin:10px 0 4px}
+.btn{display:inline-block;text-align:center;text-decoration:none;background:var(--red);color:var(--onred);border:0;border-radius:14px;padding:11px 20px;font-weight:600}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--line)}
+.btn.full{display:block;width:100%;padding:15px;font-size:19px}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--card);border-radius:18px;padding:14px 16px;margin-bottom:10px}
+.opt.on{border-color:var(--green);border-width:3px}
+.opt strong{font-size:19px;font-weight:600}
+.opt span{display:block;color:var(--mute);font-size:15px}
+.step{display:flex;align-items:center;gap:12px;padding:8px 0}
+.step b{flex:1;font-weight:500}
+.step i{font-style:normal;min-width:28px;text-align:center;font-size:20px;font-weight:600}
+.step button{width:40px;height:40px;border-radius:50%;border:2px solid var(--line);background:var(--card);font-size:22px;line-height:1}
+.msg{color:var(--red);font-weight:500;margin:8px 0}
+.big{font-size:32px;font-weight:700;text-align:center;margin:6px 0 2px}
+.lk{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.lk span{min-width:64px;font-weight:500}
+.lk input{font-size:13px;padding:8px 10px}
+.gift{position:relative;text-align:center;padding:30px 18px 24px;border-radius:22px;background:var(--red);color:var(--onred);overflow:hidden;margin-bottom:14px}
+.gift::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:36px;transform:translateX(-50%);background:var(--gold);opacity:.9}
+.gift>*{position:relative}
+.gift .tag{background:var(--card);color:var(--ink);border-radius:16px;padding:14px 12px;margin:10px 0}
+.gift button{background:transparent;border:2px solid var(--onred);color:var(--onred);border-radius:14px;padding:10px 20px;font-weight:600}
+@media (prefers-reduced-motion:no-preference){.gift{animation:pop .35s ease-out}@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:none;opacity:1}}}
+</style>
+</head>
+<body>
+<main><header class="hero"><svg viewBox="0 0 64 72" width="64" height="72" aria-hidden="true"><rect x="27" y="62" width="10" height="8" fill="#8a5426"/><polygon points="32,32 60,64 4,64" fill="#2f9e66"/><polygon points="32,18 56,48 8,48" fill="#38b374"/><polygon points="32,6 50,30 14,30" fill="#43c383"/><polygon points="32,0 34,5 39,5 35,8 37,13 32,10 27,13 29,8 25,5 30,5" fill="#ffc53d"/><circle cx="26" cy="26" r="2.5" fill="#c8202f"/><circle cx="38" cy="40" r="3" fill="#ffc53d"/><circle cx="24" cy="44" r="3" fill="#c8202f"/><circle cx="44" cy="56" r="3" fill="#fff"/><circle cx="18" cy="58" r="3" fill="#ffc53d"/><circle cx="32" cy="54" r="3" fill="#c8202f"/></svg><div><h1>MB Family Christmas Gift Exchange</h1><p>Secret Santa, Nasty Santa or White Elephant</p></div></header><div id="view"></div></main>
+<script>
+const BASE=(location.protocol==='https:'&&!/claude|anthropic/i.test(location.hostname))?location.href.split('#')[0]:'https://claude.ai/artifact/7saV24wHfZ5qNvYLF7N1Cs';
+const OPTS=[
+{id:'secret',name:'Secret Santa',desc:'Everyone secretly draws one person and buys a gift just for them.'},
+{id:'nasty',name:'Nasty Santa',desc:'Everyone brings a gift. Take turns picking or stealing, with no limit on steals.'},
+{id:'elephant',name:'White Elephant',desc:'Everyone brings a gift. Take turns unwrapping or stealing. Each gift can be stolen twice.'}];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const enc=o=>btoa(encodeURIComponent(JSON.stringify(o))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const dec=t=>{try{t=t.replace(/-/g,'+').replace(/_/g,'/');while(t.length%4)t+='=';return JSON.parse(decodeURIComponent(atob(t)));}catch(e){return null;}};
+const oname=id=>OPTS.find(o=>o.id===id).name;
+const odesc=id=>OPTS.find(o=>o.id===id).desc;
+const p2=n=>String(n).padStart(2,'0');
+const ymd=d=>''+d.getFullYear()+p2(d.getMonth()+1)+p2(d.getDate());
+function parseD(s){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(s||'');return m?new Date(+m[1],+m[2]-1,+m[3]):null;}
+function daysLeft(s){const d=parseD(s);if(!d)return null;const t=new Date();t.setHours(0,0,0,0);return Math.round((d-t)/864e5);}
+function sattolo(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*i);[b[i],b[j]]=[b[j],b[i]];}return b;}
+function shuffle(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+const gcal=(q)=>'https://calendar.google.com/calendar/render?action=TEMPLATE'+Object.entries(q).map(([k,v])=>'&'+k+'='+encodeURIComponent(v)).join('');
+const clean=s=>String(s||'').replace(/[^\d+]/g,'');
+
+/* ---------- Organizer ---------- */
+let O={names:[],limit:25,date:'',phone:'',lists:{},counts:{secret:0,nasty:0,elephant:0},fmt:null,draw:null};
+try{const r=localStorage.getItem('giftx2');if(r)Object.assign(O,JSON.parse(r));}catch(e){}
+let M={msg:'',confirm:''};
+const saveO=()=>{try{localStorage.setItem('giftx2',JSON.stringify(O));}catch(e){}};
+function leaders(){const m=Math.max(0,...Object.values(O.counts));return m?OPTS.filter(o=>O.counts[o.id]===m):[];}
+function curFmt(){return O.fmt||(leaders()[0]||OPTS[0]).id;}
+function linkRow(label,tok,i){const u=BASE+'#'+tok;return `<div class="lk">${label?`<span>${esc(label)}</span>`:''}<input id="lk${i}" readonly value="${esc(u)}" aria-label="Link"><button class="btn ghost" data-act="copy" data-v="${i}">Copy</button><button class="btn ghost" data-act="copyc" data-t="${tok}">Code</button></div>`;}
+function orgView(){
+ const n=O.names.length;
+ const chips=O.names.map((x,i)=>`<button class="pill" data-act="rm" data-v="${i}" aria-label="Remove ${esc(x)}">${esc(x)} ✕</button>`).join('');
+ const setup=`<div class="card"><h2>Players and details</h2><div class="add"><input id="nm" maxlength="20" placeholder="Add a name" autocomplete="off"><button class="btn" data-act="add">Add</button></div>
+ <div class="row">${chips||'<span class="note">No players yet.</span>'}</div>
+ ${n?`<label>Amazon wish list links</label><p class="note" style="margin-bottom:8px">In Amazon, open the wish list, choose Share, and copy the link. Edits to a list show up on their own.</p>${O.names.map((x,i)=>`<div class="lk"><span>${esc(x)}</span><input id="wl${i}" type="url" placeholder="Paste link" value="${esc(O.lists[x]||'')}" aria-label="${esc(x)} wish list link"></div>`).join('')}`:''}
+ <label for="lim">Gift limit ($)</label><input id="lim" type="number" min="1" max="500" inputmode="numeric" value="${O.limit}">
+ <label for="dt">Exchange date</label><input id="dt" type="date" value="${esc(O.date)}">
+ <label for="ph">Your phone number, for texted votes</label><input id="ph" type="tel" inputmode="tel" placeholder="Optional" value="${esc(O.phone)}"></div>`;
+ let vote=`<div class="card"><h2>Vote</h2><p class="note">Add at least 2 players first.</p></div>`;
+ if(n>=2){
+  const tok=enc({m:'v',ns:O.names,l:O.limit,p:clean(O.phone),d:O.date});
+  const L=leaders();
+  vote=`<div class="card"><h2>Vote</h2><p class="note">Send this one link to everyone. Each kid taps their name, picks an option, and texts you the vote.</p>${linkRow('',tok,'v')}
+  <p class="note" style="margin-top:14px">Enter the votes you get:</p>
+  ${OPTS.map(o=>`<div class="step"><b>${o.name}</b><button data-act="dn" data-v="${o.id}" aria-label="Fewer votes for ${o.name}">−</button><i>${O.counts[o.id]}</i><button data-act="up" data-v="${o.id}" aria-label="More votes for ${o.name}">+</button></div>`).join('')}
+  ${L.length===1?`<p class="big">${L[0].name} is ahead</p>`:L.length>1?`<p class="note">Tied: ${L.map(o=>o.name).join(', ')}. Choose below.</p>`:''}</div>`;
+ }
+ let draw=`<div class="card"><h2>Draw</h2><p class="note">Add at least 3 players first.</p></div>`;
+ if(n>=3){
+  const f=curFmt();
+  const fm=OPTS.map(o=>`<button class="pill ${f===o.id?'on':''}" data-act="fmt" data-v="${o.id}">${o.name}</button>`).join('');
+  let res='';
+  if(O.draw){res=`<p class="note" style="margin-top:14px">Send each kid only their own link.</p>`+O.draw.kids.map((k,i)=>linkRow(k.n,tokFor(k),i)).join('');}
+  draw=`<div class="card"><h2>Draw</h2><div class="row">${fm}</div>
+  <button class="btn full" style="margin-top:14px" data-act="draw">${O.draw?(M.confirm==='draw'?'Tap again to redraw':'Draw again'):(f==='secret'?'Draw names':'Draw turn order')}</button>${res}</div>`;
+ }
+ return `<div class="card"><h2>Got a link or code from someone?</h2><p class="note">Kids: paste it here to open your page.</p><div class="add"><input id="pl" placeholder="Paste link" autocomplete="off"><button class="btn" data-act="open">Open</button></div></div><p class="sub">Set up, collect votes, draw, then send each kid their own link.</p>${setup}${vote}${draw}
+ ${M.msg?`<p class="msg">${esc(M.msg)}</p>`:''}
+ <p style="text-align:center"><button class="btn ghost" data-act="wipe">${M.confirm==='wipe'?'Tap again to clear everything':'Start over'}</button></p>`;
+}
+function tokFor(k){return k.tok||enc({m:'k',f:O.draw.f,l:O.limit,d:O.date,c:O.names.length,n:k.n,to:k.to,o:k.o,w:k.to?(O.lists[k.to]||''):undefined});}
+function doDraw(){
+ const f=curFmt();
+ O.fmt=f;
+ if(f==='secret'){const p=sattolo(O.names);O.draw={f,kids:O.names.map((x,i)=>({n:x,to:p[i]}))};}
+ else{const o=shuffle(O.names);O.draw={f,kids:o.map((x,i)=>({n:x,o:i+1}))};}
+}
+
+/* ---------- Kid pages ---------- */
+let K={voter:null,opt:null,open:false,msg:''};let pasted='';
+function voteView(t){
+ const ns=t.ns||[];
+ const who=ns.map((x,i)=>`<button class="pill ${K.voter===i?'on':''}" data-act="kv" data-v="${i}">${esc(x)}</button>`).join('');
+ const opts=OPTS.map(o=>`<button class="opt ${K.opt===o.id?'on':''}" data-act="ko" data-v="${o.id}"><strong>${o.name}</strong><span>${o.desc}</span></button>`).join('');
+ let send=`<button class="btn full" data-act="kneed">Text my vote</button>`;
+ if(K.voter!==null&&K.opt){const body=`${ns[K.voter]} votes for ${oname(K.opt)}`;send=`<a class="btn full" href="sms:${esc(t.p||'')}?&body=${encodeURIComponent(body)}">Text my vote</a>`;}
+ return `<p class="sub">Vote for how we do the gift exchange. Gift limit: $${+t.l||0}.</p>
+ <div class="card"><h2>Who are you?</h2><div class="row">${who}</div></div>
+ <h2>Pick your favorite</h2>${opts}${send}${K.msg?`<p class="msg">${esc(K.msg)}</p>`:''}`;
+}
+function kidView(t){
+ const f=t.f,left=daysLeft(t.d);
+ let main='';
+ if(f==='secret'){
+  main=K.open?`<div class="gift"><p style="margin:0">${esc(t.n)}, you’re buying for</p><div class="tag"><div class="big">${esc(t.to)}</div></div>${t.w&&/^https:\/\//i.test(t.w)?`<p style="margin:0 0 12px"><a class="btn" style="background:var(--gold);color:#14213d" href="${esc(t.w)}" target="_blank" rel="noopener">See ${esc(t.to)}’s Amazon wish list</a></p>`:'<p style="margin:0 0 12px">No wish list link yet.</p>'}<p style="margin:0 0 12px">Keep it secret!</p><button data-act="khide">Hide it</button></div>`
+  :`<div class="card"><h2>Hi ${esc(t.n)}!</h2><p>Make sure no one is looking, then tap to see who you got.</p><button class="btn full" data-act="kshow">Show my person</button></div>`;
+ }else{
+  main=`<div class="card"><h2>Hi ${esc(t.n)}!</h2><p class="big">You’re #${t.o} of ${t.c}</p><p class="note" style="text-align:center">${oname(f)}: ${odesc(f)}</p></div>`;
+ }
+ const info=`<div class="card"><h2>Gift limit: $${+t.l}</h2>${left!==null?(left>0?`<p>${left} day${left===1?'':'s'} left to shop.</p>`:left===0?'<p>The exchange is today!</p>':'<p>The exchange date has passed.</p>'):''}${f!=='secret'?'<p class="note">Bring a wrapped gift that anyone would like.</p>':''}</div>`;
+ let rem='';
+ if(left!==null&&left>0){
+  const d=parseD(t.d),weeks=Math.max(1,Math.min(3,Math.floor(left/7)));
+  let s=new Date(d);s.setDate(s.getDate()-7*weeks);
+  const tm=new Date();tm.setHours(0,0,0,0);tm.setDate(tm.getDate()+1);if(s<tm)s=tm;
+  const nx=new Date(d);nx.setDate(nx.getDate()+1);
+  const what=f==='secret'?'your Secret Santa gift':'your gift for the exchange';
+  const a=gcal({text:'Shop for '+what,details:'Gift limit: $'+t.l+'.',dates:ymd(s)+'T170000/'+ymd(s)+'T173000',recur:'RRULE:FREQ=WEEKLY;COUNT='+weeks});
+  const b=gcal({text:'Gift exchange',details:'Bring your gift. Limit: $'+t.l+'.',dates:ymd(d)+'/'+ymd(nx)});
+  rem=`<div class="card"><h2>Shopping reminders</h2><p class="note">Adds weekly reminders to your Google Calendar, plus the exchange day.</p><div class="row"><a class="btn" href="${a}" target="_blank" rel="noopener">Add shopping reminders</a><a class="btn ghost" href="${b}" target="_blank" rel="noopener">Add exchange day</a></div></div>`;
+ }
+ return main+info+rem;
+}
+
+/* ---------- Render and events ---------- */
+function render(){
+ const h=pasted||location.hash.slice(1);let html;
+ if(!h)html=orgView();
+ else{const t=dec(h);html=t&&t.m==='v'?voteView(t):t&&t.m==='k'?kidView(t):'<div class="card"><h2>This link isn’t working</h2><p>Ask for a new link.</p></div>';}
+ $('view').innerHTML=html;saveO();
+}
+window.addEventListener('hashchange',()=>{K={voter:null,opt:null,open:false,msg:''};render();});
+let lastH=location.hash;setInterval(()=>{if(location.hash!==lastH){lastH=location.hash;K={voter:null,opt:null,open:false,msg:''};render();}},500);
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-act]');if(!b)return;
+ const a=b.dataset.act,v=b.dataset.v;
+ if(a==='copyc'){try{navigator.clipboard.writeText(b.dataset.t).then(()=>{b.textContent='Copied';},()=>{b.textContent='Blocked';});}catch(x){b.textContent='Blocked';}return;}
+ if(a==='copy'){const i=$('lk'+v);i.select();try{navigator.clipboard.writeText(i.value).then(()=>{b.textContent='Copied';},()=>{b.textContent='Hold to copy';});}catch(x){b.textContent='Hold to copy';}return;}
+ if(a==='kv'){K.voter=+v;K.msg='';}
+ else if(a==='ko'){K.opt=v;K.msg='';}
+ else if(a==='kneed'){K.msg='Tap your name and pick an option first.';}
+ else if(a==='kshow'){K.open=true;}
+ else if(a==='open'){const s=$('pl').value.trim(),i=s.indexOf('#'),tk=i>=0?s.slice(i+1):s,t=dec(tk);if(t&&(t.m==='v'||t.m==='k')){pasted=tk;K={voter:null,opt:null,open:false,msg:''};}else M.msg='That link didn’t work. Paste the whole link.';}
+ else if(a==='khide'){K.open=false;}
+ else{
+  M.msg='';if(a!=='draw'&&a!=='wipe')M.confirm='';
+  if(a==='add'){const n=$('nm').value.trim();
+   if(!n)M.msg='Type a name first.';
+   else if(O.names.some(x=>x.toLowerCase()===n.toLowerCase()))M.msg='That name is already added.';
+   else if(O.names.length>=12)M.msg='The limit is 12 players.';
+   else{O.names.push(n);O.draw=null;}
+   render();const j=$('nm');if(j)j.focus();return;}
+  else if(a==='rm'){O.names.splice(+v,1);O.draw=null;}
+  else if(a==='up'){O.counts[v]++;O.fmt=null;O.draw=null;}
+  else if(a==='dn'){O.counts[v]=Math.max(0,O.counts[v]-1);O.fmt=null;O.draw=null;}
+  else if(a==='fmt'){O.fmt=v;O.draw=null;}
+  else if(a==='draw'){if(O.draw&&M.confirm!=='draw')M.confirm='draw';else{M.confirm='';doDraw();}}
+  else if(a==='wipe'){if(M.confirm!=='wipe')M.confirm='wipe';else{O={names:[],limit:25,date:'',phone:'',lists:{},counts:{secret:0,nasty:0,elephant:0},fmt:null,draw:null};M.confirm='';}}
+ }
+ render();
+});
+document.addEventListener('change',e=>{
+ const t=e.target;
+ if(t.id==='lim'){const n=Math.round(+t.value);if(n>=1&&n<=500){O.limit=n;O.draw=null;}}
+ else if(t.id==='dt'){O.date=t.value;O.draw=null;}
+ else if(t.id==='ph'){O.phone=t.value;}
+ else if(/^wl\d+$/.test(t.id)){const x=O.names[+t.id.slice(2)],u=t.value.trim();if(!u){delete O.lists[x];M.msg='';}else if(/^https:\/\//i.test(u)){O.lists[x]=u;M.msg='';}else{M.msg='Wish list links must start with https://';}}
+ else return;
+ render();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='nm'){const b=document.querySelector('[data-act="add"]');if(b)b.click();}});
+render();
+</script>
+</body>
+</html>
