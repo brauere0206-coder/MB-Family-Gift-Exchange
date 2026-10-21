@@ -88,7 +88,7 @@ let M={msg:'',confirm:''};
 const saveO=()=>{try{localStorage.setItem('giftx2',JSON.stringify(O));}catch(e){}};
 function leaders(){const m=Math.max(0,...Object.values(O.counts));return m?OPTS.filter(o=>O.counts[o.id]===m):[];}
 function curFmt(){return O.fmt||(leaders()[0]||OPTS[0]).id;}
-function linkRow(label,tok,i){const u=BASE+'#'+tok;return `<div class="lk">${label?`<span>${esc(label)}</span>`:''}<input id="lk${i}" readonly value="${esc(u)}" aria-label="Link"><button class="btn ghost" data-act="copy" data-v="${i}">Copy</button><button class="btn ghost" data-act="copyc" data-t="${tok}">Code</button></div>`;}
+function linkRow(label,tok,i){const u=BASE+'?c='+tok;return `<div class="lk">${label?`<span>${esc(label)}</span>`:''}<input id="lk${i}" readonly value="${esc(u)}" aria-label="Link"><button class="btn ghost" data-act="copy" data-v="${i}">Copy</button><button class="btn ghost" data-act="copyc" data-t="${tok}">Code</button></div>`;}
 function orgView(){
  const n=O.names.length;
  const chips=O.names.map((x,i)=>`<button class="pill" data-act="rm" data-v="${i}" aria-label="Remove ${esc(x)}">${esc(x)} ✕</button>`).join('');
@@ -166,7 +166,7 @@ function kidView(t){
 
 /* ---------- Render and events ---------- */
 function render(){
- const h=pasted||location.hash.slice(1);let html;
+ const h=pasted||new URLSearchParams(location.search).get('c')||location.hash.slice(1);let html;
  if(!h)html=orgView();
  else{const t=dec(h);html=t&&t.m==='v'?voteView(t):t&&t.m==='k'?kidView(t):'<div class="card"><h2>This link isn’t working</h2><p>Ask for a new link.</p></div>';}
  $('view').innerHTML=html;saveO();
